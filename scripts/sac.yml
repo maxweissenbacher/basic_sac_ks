@@ -1,0 +1,45 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+ generateName: ks-sac-
+ labels:
+   kueue.x-k8s.io/queue-name: eidf079ns-user-queue
+spec:
+ completions: 5
+ parallelism: 5
+ template:
+  spec:
+   restartPolicy: Never
+   containers:
+   - name: pytorch-con
+     image: pytorch/pytorch:2.1.0-cuda12.1-cudnn8-devel
+     volumeMounts:
+      - mountPath: /dev/shm
+        name: dshm
+     command: [/bin/bash, -c, --]
+     args: 
+       - |
+         export OMP_NUM_THREADS=1;
+         mkdir build;
+         cd build;
+         apt update; apt upgrade -y; apt install git vim -y;
+         git clone https://github.com/maxweissenbacher/basic_sac_ks.git;
+         cd basic_sac_ks;
+         git checkout main;
+         pip install -r requirements_ks.txt;
+         wandb login ac8ec66b318e6624089b2723c3174f01a850416c;
+         python main_sac.py env.nu=0.08 logger.project_name=SAC_KS_basic_algo
+     resources:
+      requests:
+       cpu: 8
+       memory: "64Gi"
+      limits:
+       cpu: 8
+       memory: "64Gi"
+       nvidia.com/gpu: 1
+   nodeSelector:
+    nvidia.com/gpu.product: NVIDIA-A100-SXM4-80GB
+   volumes:
+   - name: dshm
+     emptyDir:
+      medium: Memory
