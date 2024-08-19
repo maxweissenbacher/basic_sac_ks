@@ -1,0 +1,58 @@
+2024-04-05 17:23:08,364 INFO    StreamThr :41839 [internal.py:wandb_internal():86] W&B internal server running at pid: 41839, started at: 2024-04-05 17:23:08.363568
+2024-04-05 17:23:08,366 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: status
+2024-04-05 17:23:08,377 INFO    WriterThread:41839 [datastore.py:open_for_write():87] open: /Users/max/PycharmProjects/latentRL/sac/wandb/offline-run-20240405_172308-lkxml237/run-lkxml237.wandb
+2024-04-05 17:23:08,448 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: run_start
+2024-04-05 17:23:08,457 DEBUG   HandlerThread:41839 [system_info.py:__init__():26] System info init
+2024-04-05 17:23:08,457 DEBUG   HandlerThread:41839 [system_info.py:__init__():41] System info init done
+2024-04-05 17:23:08,457 INFO    HandlerThread:41839 [system_monitor.py:start():194] Starting system monitor
+2024-04-05 17:23:08,457 INFO    SystemMonitor:41839 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-04-05 17:23:08,458 INFO    HandlerThread:41839 [system_monitor.py:probe():214] Collecting system info
+2024-04-05 17:23:08,459 INFO    SystemMonitor:41839 [interfaces.py:start():190] Started cpu monitoring
+2024-04-05 17:23:08,460 DEBUG   HandlerThread:41839 [system_info.py:probe():150] Probing system
+2024-04-05 17:23:08,460 INFO    SystemMonitor:41839 [interfaces.py:start():190] Started disk monitoring
+2024-04-05 17:23:08,463 INFO    SystemMonitor:41839 [interfaces.py:start():190] Started gpuapple monitoring
+2024-04-05 17:23:08,469 INFO    SystemMonitor:41839 [interfaces.py:start():190] Started memory monitoring
+2024-04-05 17:23:08,470 INFO    SystemMonitor:41839 [interfaces.py:start():190] Started network monitoring
+2024-04-05 17:23:08,480 DEBUG   HandlerThread:41839 [system_info.py:_probe_git():135] Probing git
+2024-04-05 17:23:08,523 DEBUG   HandlerThread:41839 [system_info.py:_probe_git():143] Probing git done
+2024-04-05 17:23:08,523 DEBUG   HandlerThread:41839 [system_info.py:probe():198] Probing system done
+2024-04-05 17:23:08,523 DEBUG   HandlerThread:41839 [system_monitor.py:probe():223] {'os': 'macOS-13.4.1-arm64-arm-64bit', 'python': '3.10.13', 'heartbeatAt': '2024-04-05T16:23:08.460230', 'startedAt': '2024-04-05T16:23:08.327704', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/Users/max/PycharmProjects/latentRL/sac/sac.py', 'codePathLocal': 'sac.py', 'codePath': 'sac/sac.py', 'git': {'remote': 'https://github.com/maxweissenbacher/latentRL.git', 'commit': '408c81e26d90ded4cd91bb3578958a3bde21ab56'}, 'email': 'max.weissenbacher@proton.me', 'root': '/Users/max/PycharmProjects/latentRL', 'host': 'Maxs-MacBook-Pro.local', 'username': 'max', 'executable': '/Users/max/miniconda3/envs/latentrl/bin/python', 'cpu_count': 8, 'cpu_count_logical': 8, 'cpu_freq': {'current': 3204, 'min': 600, 'max': 3204}, 'cpu_freq_per_core': [{'current': 3204, 'min': 600, 'max': 3204}], 'disk': {'/': {'total': 228.27386474609375, 'used': 11.186325073242188}}, 'gpuapple': {'type': 'arm', 'vendor': 'Apple'}, 'memory': {'total': 8.0}}
+2024-04-05 17:23:08,523 INFO    HandlerThread:41839 [system_monitor.py:probe():224] Finished collecting system info
+2024-04-05 17:23:08,523 INFO    HandlerThread:41839 [system_monitor.py:probe():227] Publishing system info
+2024-04-05 17:23:08,523 DEBUG   HandlerThread:41839 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-04-05 17:23:10,939 DEBUG   HandlerThread:41839 [system_info.py:_save_conda():222] Saving conda packages done
+2024-04-05 17:23:10,940 INFO    HandlerThread:41839 [system_monitor.py:probe():229] Finished publishing system info
+2024-04-05 17:23:10,972 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: python_packages
+2024-04-05 17:23:13,386 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:23:13,387 DEBUG   SenderThread:41839 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:23:18,403 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:23:18,404 DEBUG   SenderThread:41839 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:23:23,426 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:23:23,427 DEBUG   SenderThread:41839 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:23:28,442 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:23:28,444 DEBUG   SenderThread:41839 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:23:33,455 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:23:33,455 DEBUG   SenderThread:41839 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:23:38,479 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:23:38,485 DEBUG   SenderThread:41839 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:23:40,707 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: partial_history
+2024-04-05 17:23:43,504 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:23:43,505 DEBUG   SenderThread:41839 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:23:48,520 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:23:48,521 DEBUG   SenderThread:41839 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:23:53,538 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:23:53,538 DEBUG   SenderThread:41839 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:23:58,564 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:23:58,565 DEBUG   SenderThread:41839 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:24:03,585 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:24:03,585 DEBUG   SenderThread:41839 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:24:08,472 DEBUG   SystemMonitor:41839 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-04-05 17:24:08,613 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:24:08,617 DEBUG   SenderThread:41839 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:24:09,076 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: partial_history
+2024-04-05 17:24:13,629 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:24:13,630 DEBUG   SenderThread:41839 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:24:18,648 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:24:18,649 DEBUG   SenderThread:41839 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:24:23,667 DEBUG   HandlerThread:41839 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:24:23,667 DEBUG   SenderThread:41839 [sender.py:send_request():406] send_request: status_report

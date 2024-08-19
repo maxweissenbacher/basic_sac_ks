@@ -1,0 +1,54 @@
+2024-04-05 17:13:24,078 INFO    StreamThr :41391 [internal.py:wandb_internal():86] W&B internal server running at pid: 41391, started at: 2024-04-05 17:13:24.078138
+2024-04-05 17:13:24,079 DEBUG   HandlerThread:41391 [handler.py:handle_request():146] handle_request: status
+2024-04-05 17:13:24,089 INFO    WriterThread:41391 [datastore.py:open_for_write():87] open: /Users/max/PycharmProjects/latentRL/sac/wandb/offline-run-20240405_171324-egiyejm4/run-egiyejm4.wandb
+2024-04-05 17:13:24,120 DEBUG   HandlerThread:41391 [handler.py:handle_request():146] handle_request: run_start
+2024-04-05 17:13:24,126 DEBUG   HandlerThread:41391 [system_info.py:__init__():26] System info init
+2024-04-05 17:13:24,127 DEBUG   HandlerThread:41391 [system_info.py:__init__():41] System info init done
+2024-04-05 17:13:24,127 INFO    HandlerThread:41391 [system_monitor.py:start():194] Starting system monitor
+2024-04-05 17:13:24,127 INFO    SystemMonitor:41391 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-04-05 17:13:24,128 INFO    HandlerThread:41391 [system_monitor.py:probe():214] Collecting system info
+2024-04-05 17:13:24,128 INFO    SystemMonitor:41391 [interfaces.py:start():190] Started cpu monitoring
+2024-04-05 17:13:24,130 INFO    SystemMonitor:41391 [interfaces.py:start():190] Started disk monitoring
+2024-04-05 17:13:24,130 INFO    SystemMonitor:41391 [interfaces.py:start():190] Started gpuapple monitoring
+2024-04-05 17:13:24,131 DEBUG   HandlerThread:41391 [system_info.py:probe():150] Probing system
+2024-04-05 17:13:24,131 INFO    SystemMonitor:41391 [interfaces.py:start():190] Started memory monitoring
+2024-04-05 17:13:24,132 INFO    SystemMonitor:41391 [interfaces.py:start():190] Started network monitoring
+2024-04-05 17:13:24,139 DEBUG   HandlerThread:41391 [system_info.py:_probe_git():135] Probing git
+2024-04-05 17:13:24,166 DEBUG   HandlerThread:41391 [system_info.py:_probe_git():143] Probing git done
+2024-04-05 17:13:24,166 DEBUG   HandlerThread:41391 [system_info.py:probe():198] Probing system done
+2024-04-05 17:13:24,166 DEBUG   HandlerThread:41391 [system_monitor.py:probe():223] {'os': 'macOS-13.4.1-arm64-arm-64bit', 'python': '3.10.13', 'heartbeatAt': '2024-04-05T16:13:24.131367', 'startedAt': '2024-04-05T16:13:24.067585', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/Users/max/PycharmProjects/latentRL/sac/sac.py', 'codePathLocal': 'sac.py', 'codePath': 'sac/sac.py', 'git': {'remote': 'https://github.com/maxweissenbacher/latentRL.git', 'commit': '408c81e26d90ded4cd91bb3578958a3bde21ab56'}, 'email': 'max.weissenbacher@proton.me', 'root': '/Users/max/PycharmProjects/latentRL', 'host': 'Maxs-MacBook-Pro.local', 'username': 'max', 'executable': '/Users/max/miniconda3/envs/latentrl/bin/python', 'cpu_count': 8, 'cpu_count_logical': 8, 'cpu_freq': {'current': 3204, 'min': 600, 'max': 3204}, 'cpu_freq_per_core': [{'current': 3204, 'min': 600, 'max': 3204}], 'disk': {'/': {'total': 228.27386474609375, 'used': 11.186325073242188}}, 'gpuapple': {'type': 'arm', 'vendor': 'Apple'}, 'memory': {'total': 8.0}}
+2024-04-05 17:13:24,166 INFO    HandlerThread:41391 [system_monitor.py:probe():224] Finished collecting system info
+2024-04-05 17:13:24,166 INFO    HandlerThread:41391 [system_monitor.py:probe():227] Publishing system info
+2024-04-05 17:13:24,167 DEBUG   HandlerThread:41391 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-04-05 17:13:25,558 DEBUG   HandlerThread:41391 [system_info.py:_save_conda():222] Saving conda packages done
+2024-04-05 17:13:25,559 INFO    HandlerThread:41391 [system_monitor.py:probe():229] Finished publishing system info
+2024-04-05 17:13:25,635 DEBUG   HandlerThread:41391 [handler.py:handle_request():146] handle_request: python_packages
+2024-04-05 17:13:29,125 DEBUG   HandlerThread:41391 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:13:29,130 DEBUG   SenderThread:41391 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:13:34,153 DEBUG   HandlerThread:41391 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:13:34,154 DEBUG   SenderThread:41391 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:13:39,171 DEBUG   HandlerThread:41391 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:13:39,172 DEBUG   SenderThread:41391 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:13:44,198 DEBUG   HandlerThread:41391 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:13:44,199 DEBUG   SenderThread:41391 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:13:49,226 DEBUG   HandlerThread:41391 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:13:49,227 DEBUG   SenderThread:41391 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:13:54,252 DEBUG   HandlerThread:41391 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:13:54,254 DEBUG   SenderThread:41391 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:13:59,285 DEBUG   HandlerThread:41391 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:13:59,286 DEBUG   SenderThread:41391 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:14:04,312 DEBUG   HandlerThread:41391 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:14:04,313 DEBUG   SenderThread:41391 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:14:09,329 DEBUG   HandlerThread:41391 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:14:09,329 DEBUG   SenderThread:41391 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:14:14,355 DEBUG   HandlerThread:41391 [handler.py:handle_request():146] handle_request: status_report
+2024-04-05 17:14:14,360 DEBUG   SenderThread:41391 [sender.py:send_request():406] send_request: status_report
+2024-04-05 17:14:18,032 ERROR   gpuapple  :41391 [gpu_apple.py:sample():81] GPU stats error: Command '['/Users/max/miniconda3/envs/latentrl/lib/python3.10/site-packages/wandb/bin/apple_gpu_stats', '--json']' died with <Signals.SIGINT: 2>.
+Traceback (most recent call last):
+  File "/Users/max/miniconda3/envs/latentrl/lib/python3.10/site-packages/wandb/sdk/internal/system/assets/gpu_apple.py", line 60, in sample
+    subprocess.check_output(command, universal_newlines=True)
+  File "/Users/max/miniconda3/envs/latentrl/lib/python3.10/subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "/Users/max/miniconda3/envs/latentrl/lib/python3.10/subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/Users/max/miniconda3/envs/latentrl/lib/python3.10/site-packages/wandb/bin/apple_gpu_stats', '--json']' died with <Signals.SIGINT: 2>.

@@ -1,0 +1,49 @@
+{
+    "os": "macOS-13.4.1-arm64-arm-64bit",
+    "python": "3.10.13",
+    "heartbeatAt": "2024-04-05T16:13:24.131367",
+    "startedAt": "2024-04-05T16:13:24.067585",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/max/PycharmProjects/latentRL/sac/sac.py",
+    "codePathLocal": "sac.py",
+    "codePath": "sac/sac.py",
+    "git": {
+        "remote": "https://github.com/maxweissenbacher/latentRL.git",
+        "commit": "408c81e26d90ded4cd91bb3578958a3bde21ab56"
+    },
+    "email": "max.weissenbacher@proton.me",
+    "root": "/Users/max/PycharmProjects/latentRL",
+    "host": "Maxs-MacBook-Pro.local",
+    "username": "max",
+    "executable": "/Users/max/miniconda3/envs/latentrl/bin/python",
+    "cpu_count": 8,
+    "cpu_count_logical": 8,
+    "cpu_freq": {
+        "current": 3204,
+        "min": 600,
+        "max": 3204
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3204,
+            "min": 600,
+            "max": 3204
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 228.27386474609375,
+            "used": 11.186325073242188
+        }
+    },
+    "gpuapple": {
+        "type": "arm",
+        "vendor": "Apple"
+    },
+    "memory": {
+        "total": 8.0
+    }
+}

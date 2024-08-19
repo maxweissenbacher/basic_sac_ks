@@ -1,0 +1,116 @@
+env:
+  nu: 0.0001
+  num_actuators: 5
+  num_sensors: 256
+  actuator_scale: 0.1
+  num_envs: 1
+  burnin: 0
+  target: null
+  exp_name: KS
+  path_to_cae_model: None
+  frame_skip: 1
+  soft_action: true
+  autoreg_action: 0.0
+  seed: 2253461632
+  auto_generate_seed: true
+collector:
+  total_frames: 500000
+  init_random_frames: 0
+  frames_per_batch: 600
+  collector_device: cpu
+  reset_at_each_iter: false
+replay_buffer:
+  size: 10000000
+  prb: false
+  scratch_dir: null
+optim:
+  utd_ratio: 1.0
+  actuator_loss_weight: 0.0
+  gamma: 0.99
+  lr: 0.0003
+  weight_decay: 0.0
+  batch_size: 2048
+  target_update_polyak: 0.995
+  alpha_init: 1.0
+  adam_eps: 1.0e-08
+network:
+  architecture: base
+  actor_hidden_sizes:
+  - 256
+  - 256
+  critic_hidden_sizes:
+  - 512
+  - 512
+  - 512
+  sac_critic_hidden_sizes:
+  - 256
+  - 256
+  n_quantiles: 25
+  n_nets: 5
+  top_quantiles_to_drop_per_net: 2
+  activation: relu
+  default_policy_scale: 1.0
+  scale_lb: 0.1
+  device: cpu
+  auto_detect_device: true
+  lstm:
+    hidden_size: 256
+    num_layers: 1
+    dropout: 0.1
+    final_net_sizes:
+    - 128
+    - 128
+    preprocessing_mlp_sizes:
+    - 128
+    feature_size: 128
+    critic_hidden_sizes:
+    - 512
+    - 512
+    n_quantiles: 25
+    n_nets: 5
+  buffer_lstm:
+    hidden_size: 256
+    num_layers: 1
+    dropout: 0.1
+    final_net_sizes:
+    - 128
+    - 128
+    preprocessing_mlp_sizes:
+    - 128
+    feature_size: 128
+    critic_hidden_sizes:
+    - 512
+    - 512
+    n_quantiles: 25
+    n_nets: 5
+    use_hidden: false
+  attention:
+    actor_mlp_hidden_sizes:
+    - 256
+    - 256
+    critic_hidden_sizes:
+    - 512
+    - 512
+    - 512
+    n_quantiles: 25
+    n_nets: 5
+    num_memories: 10
+    size_memory: 20
+    n_heads: 1
+    attention_mlp_depth: 2
+    actor_memory_key: actor_memory
+    critic_memory_key: critic_memory
+    initialise_random_memory: true
+    identity_reordering: true
+    simplified_attention: false
+    reset_memory: false
+  buffer:
+    buffer_observation_key: observation_buffer
+    size: 20
+logger:
+  backend: wandb
+  mode: offline
+  eval_iter: 250000
+  project_name: KS_control
+  plot_to_wandb: false
+  filename: null

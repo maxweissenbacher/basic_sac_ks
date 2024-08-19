@@ -1,0 +1,25 @@
+2024-04-05 17:14:23,675 INFO    MainThread:41456 [wandb_setup.py:_flush():76] Current SDK version is 0.16.5
+2024-04-05 17:14:23,676 INFO    MainThread:41456 [wandb_setup.py:_flush():76] Configure stats pid to 41456
+2024-04-05 17:14:23,676 INFO    MainThread:41456 [wandb_setup.py:_flush():76] Loading settings from /Users/max/.config/wandb/settings
+2024-04-05 17:14:23,676 INFO    MainThread:41456 [wandb_setup.py:_flush():76] Loading settings from /Users/max/PycharmProjects/latentRL/sac/wandb/settings
+2024-04-05 17:14:23,676 INFO    MainThread:41456 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-04-05 17:14:23,676 INFO    MainThread:41456 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-04-05 17:14:23,676 INFO    MainThread:41456 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'sac/sac.py', 'program_abspath': '/Users/max/PycharmProjects/latentRL/sac/sac.py', 'program': '/Users/max/PycharmProjects/latentRL/sac/sac.py'}
+2024-04-05 17:14:23,677 INFO    MainThread:41456 [wandb_init.py:_log_setup():527] Logging user logs to /Users/max/PycharmProjects/latentRL/sac/wandb/offline-run-20240405_171423-x8akb4vd/logs/debug.log
+2024-04-05 17:14:23,677 INFO    MainThread:41456 [wandb_init.py:_log_setup():528] Logging internal logs to /Users/max/PycharmProjects/latentRL/sac/wandb/offline-run-20240405_171423-x8akb4vd/logs/debug-internal.log
+2024-04-05 17:14:23,678 INFO    MainThread:41456 [wandb_init.py:init():567] calling init triggers
+2024-04-05 17:14:23,680 INFO    MainThread:41456 [wandb_init.py:init():574] wandb.init called with sweep_config: {}
+config: {'env': {'nu': 0.0001, 'num_actuators': 5, 'num_sensors': 256, 'actuator_scale': 0.1, 'num_envs': 1, 'burnin': 0, 'target': None, 'exp_name': 'KS', 'path_to_cae_model': 'None', 'frame_skip': 1, 'soft_action': True, 'autoreg_action': 0.0, 'seed': 2253461632, 'auto_generate_seed': True}, 'collector': {'total_frames': 500000, 'init_random_frames': 0, 'frames_per_batch': 600, 'device': 'cpu', 'reset_at_each_iter': False}, 'replay_buffer': {'size': 10000000, 'prb': False, 'scratch_dir': None}, 'optim': {'utd_ratio': 1.0, 'actuator_loss_weight': 0.0, 'gamma': 0.99, 'lr': 0.0003, 'weight_decay': 0.0, 'batch_size': 2048, 'target_update_polyak': 0.995, 'alpha_init': 1.0, 'adam_eps': 1e-08}, 'network': {'architecture': 'base', 'actor_hidden_sizes': [256, 256], 'critic_hidden_sizes': [512, 512, 512], 'sac_critic_hidden_sizes': [256, 256], 'n_quantiles': 25, 'n_nets': 5, 'top_quantiles_to_drop_per_net': 2, 'activation': 'relu', 'default_policy_scale': 1.0, 'scale_lb': 0.1, 'device': 'cpu', 'auto_detect_device': True}, 'logger': {'backend': 'wandb', 'mode': 'offline', 'eval_iter': 250000, 'project_name': 'KS_control', 'team_name': 'why_are_all_the_good_names_taken_aaa', 'plot_to_wandb': False, 'filename': None}}
+2024-04-05 17:14:23,680 INFO    MainThread:41456 [wandb_init.py:init():617] starting backend
+2024-04-05 17:14:23,680 INFO    MainThread:41456 [wandb_init.py:init():621] setting up manager
+2024-04-05 17:14:23,697 INFO    MainThread:41456 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=spawn,fork,forkserver, using: spawn
+2024-04-05 17:14:23,699 INFO    MainThread:41456 [wandb_init.py:init():629] backend started and connected
+2024-04-05 17:14:23,708 INFO    MainThread:41456 [wandb_init.py:init():721] updated telemetry
+2024-04-05 17:14:23,752 INFO    MainThread:41456 [wandb_init.py:init():754] communicating run to backend with 90.0 second timeout
+2024-04-05 17:14:23,758 INFO    MainThread:41456 [wandb_init.py:init():805] starting run threads in backend
+2024-04-05 17:14:25,626 INFO    MainThread:41456 [wandb_run.py:_console_start():2323] atexit reg
+2024-04-05 17:14:25,626 INFO    MainThread:41456 [wandb_run.py:_redirect():2178] redirect: wrap_raw
+2024-04-05 17:14:25,627 INFO    MainThread:41456 [wandb_run.py:_redirect():2243] Wrapping output streams.
+2024-04-05 17:14:25,627 INFO    MainThread:41456 [wandb_run.py:_redirect():2268] Redirects installed.
+2024-04-05 17:14:25,628 INFO    MainThread:41456 [wandb_init.py:init():848] run started, returning control to user process
+2024-04-05 17:14:28,676 WARNING MsgRouterThr:41456 [router.py:message_loop():77] message_loop has been closed
