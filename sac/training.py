@@ -24,7 +24,7 @@ from sac.agents_sac import (
     make_sac_optimizer,
 )
 from utils.rng import env_seed
-from env.ks_env_utils import make_parallel_ks_env, make_ks_eval_env
+from env.ks_env_utils import make_parallel_ks_env, make_ks_eval_env, make_parallel_ks_eval_env
 
 
 # @hydra.main(version_base="1.2", config_path="", config_name="config_sac")
@@ -48,7 +48,7 @@ def main(cfg: "DictConfig"):  # noqa: F821
 
     # Create environments
     train_env = make_parallel_ks_env(cfg)
-    eval_env = make_ks_eval_env(cfg)
+    eval_env = make_parallel_ks_eval_env(cfg)
 
     # Create agent
     model, exploration_policy, device = make_sac_agent(cfg, train_env, eval_env)

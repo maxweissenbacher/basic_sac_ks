@@ -35,7 +35,7 @@ def add_env_transforms(env, cfg):
     return TransformedEnv(env, transforms)
 
 
-def make_ks_env(cfg):
+def make_ks_env(cfg, eval=False):
     # Set environment hyperparameters
     device = cfg.collector.device
     actuator_locs = torch.tensor(
@@ -73,12 +73,20 @@ def make_ks_env(cfg):
     # Create environments
     train_env = add_env_transforms(KSenv(**env_params), cfg)
     train_env.set_seed(env_seed(cfg))
+    if eval:
+        train_env.eval()
     return train_env
 
 
 def make_parallel_ks_env(cfg):
-    make_env_fn = EnvCreator(lambda: make_ks_env(cfg))
+    make_env_fn = EnvCreator(lambda: make_ks_env(cfg, eval=False))
     env = ParallelEnv(cfg.env.num_envs, make_env_fn)
+    return env
+
+
+def make_parallel_ks_eval_env(cfg):
+    make_env_fn = EnvCreator(lambda: make_ks_env(cfg, eval=True))
+    env = ParallelEnv(cfg.logger.num_eval_envs, make_env_fn)
     return env
 
 
