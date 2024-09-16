@@ -7,3 +7,5 @@ tqdm
 wandb
 scipy==1.12.0
 pandas
+gym==0.26.2
+numba==0.60.0
