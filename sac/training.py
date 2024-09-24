@@ -183,44 +183,41 @@ def main(cfg: "DictConfig"):  # noqa: F821
                 )
                 eval_time = time.time() - eval_start
                 # Compute total reward (norm of solution + norm of actuation)
-                eval_reward = eval_rollout["next", "reward"].mean(-2).mean().item()
-                last_reward = eval_rollout["next", "reward"][..., -1, :].mean().item()
-                # Compute u component of reward
-                eval_reward_u = - torch.linalg.norm(eval_rollout["next", "u"], dim=-1).mean(-1).mean().item()
-                last_reward_u = - torch.linalg.norm(eval_rollout["next", "u"][..., -1, :], dim=-1).mean().item()
+                eval_rewards = eval_rollout["next", "reward"].mean(-2)  # 20 x 1
+                last_rewards = eval_rollout["next", "reward"][..., -1, :]  # 20 x 1
+                mean_eval_reward = eval_rewards.mean().item()  # across all eval envs
+                std_eval_reward = eval_rewards.std().item()  # across all eval envs
+                mean_last_reward = last_rewards.mean().item()
+                std_last_reward = last_rewards.std().item()
                 # Compute mean and std of actuation
-                mean_actuation = torch.linalg.norm(eval_rollout["action"], dim=-1).mean(-1).mean().item()
-                std_actuation = torch.linalg.norm(eval_rollout["action"], dim=-1).std(-1).mean().item()
+                mean_actuations = torch.linalg.norm(eval_rollout["action"], dim=-1).mean(-1)  # 20 x 1
+                std_actuations = torch.linalg.norm(eval_rollout["action"], dim=-1).std(-1)
+                mean_mean_actuation = mean_actuations.mean().item()
+                mean_std_actuation = std_actuations.mean().item()
                 # Compute length of rollout
                 terminated = eval_rollout["terminated"].nonzero()
                 if terminated.nelement() > 0:
                     rollout_episode_length = terminated[0][0].item()
                 else:
                     rollout_episode_length = cfg.logger.test_episode_length
-                # Compute CAE accuracy during evaluation rollout
-                if cfg.env.path_to_cae_model:
-                    cae_output = eval_rollout["cae_output"].detach().cpu().numpy()
-                    u = eval_rollout["u"].detach().cpu().numpy()
-                    cae_rel_error = np.linalg.norm(cae_output - u) / np.linalg.norm(u)
-                    cae_abs_error = np.linalg.norm(cae_output - u)
 
             log_info.update(
                 {
-                    "eval/reward": eval_reward,
-                    "eval/last_reward": last_reward,
-                    "eval/mean_actuation": mean_actuation,
-                    "eval/std_actuation": std_actuation,
+                    "eval/mean_reward": mean_eval_reward,
+                    "eval/mean_last_reward": mean_last_reward,
+                    "eval/std_reward": std_eval_reward,
+                    "eval/std_last_reward": std_last_reward,
+                    "eval/mean_mean_actuation": mean_mean_actuation,
+                    "eval/mean_std_actuation": mean_std_actuation,
                     "eval/time": eval_time,
                     "eval/episode_length": rollout_episode_length,
                 }
             )
-            if cfg.env.path_to_cae_model:
-                log_info.update(
-                    {
-                        "eval/cae_relative_L2_error": cae_rel_error,
-                        "eval/cae_absolute_L2_error": cae_abs_error,
-                    }
-                )
+            for i in range(eval_rewards.shape[0]):
+                log_info.update({f"eval/reward_{i}": eval_rewards[i].item()})
+                log_info.update({f"eval/last_reward_{i}": last_rewards[i].item()})
+                log_info.update({f"eval/mean_actuation_{i}": mean_actuations[i].item()})
+                log_info.update({f"eval/std_actuation_{i}": std_actuations[i].item()})
 
         wandb.log(data=log_info, step=collected_frames)
         sampling_start = time.time()
