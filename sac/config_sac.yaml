@@ -19,8 +19,8 @@ env:
 # collector
 collector:
   total_frames: 200_000
-  init_random_frames: 25_000
-  max_episode_length: 500  # Timesteps (disregarding frame skip)
+  init_random_frames: 20_000
+  max_episode_length: 150  # Timesteps (disregarding frame skip)
   frames_per_batch: 500
   device: cpu
   reset_at_each_iter: False
@@ -35,7 +35,7 @@ replay_buffer:
 optim:
   utd_ratio: 1.0
   actuator_loss_weight: 0.0  # Weight hyperparameter of actuation size in reward function
-  gamma: 0.99
+  gamma: 0.9
   lr: 3.0e-4
   weight_decay: 0.0  # L2 regularisation | Works well for LSTM | For attention weight_decay > 0 leads to NaNs
   batch_size: 256
@@ -57,12 +57,14 @@ network:
 logger:
   backend: wandb
   mode: online
-  eval_iter: 20  # Evaluate every x batches
+  eval_iter: 1  # Evaluate every x batches
   test_episode_length: 150
   num_eval_envs: 20
-  project_name: LatentRL
+  project_name: basic_sac_transfer_from_L_12
   team_name: why_are_all_the_good_names_taken_aaa
   save_replay_buffer: False
+  load_model: True
+  model_dir: saved_models/sac_L_12/
 
 # Disable output subdirectory
 hydra:

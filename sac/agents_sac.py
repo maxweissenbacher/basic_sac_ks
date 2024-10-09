@@ -32,7 +32,7 @@ def make_collector(cfg, train_env, actor_model_explore):
         actor_model_explore,
         init_random_frames=cfg.collector.init_random_frames // cfg.env.frame_skip,
         frames_per_batch=cfg.collector.frames_per_batch // cfg.env.frame_skip,
-        total_frames=cfg.collector.total_frames // cfg.env.frame_skip,
+        total_frames=cfg.collector.total_frames // cfg.env.frame_skip + cfg.collector.init_random_frames // cfg.env.frame_skip,
         device=cfg.collector.device,
         # max_frames_per_traj=cfg.collector.max_episode_length // cfg.env.frame_skip,
     )
@@ -152,7 +152,7 @@ def make_sac_agent(cfg, train_env, eval_env):
     del td
     eval_env.close()
 
-    return model, model[0], device
+    return model, device
 
 
 def make_loss_module(cfg, model):

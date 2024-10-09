@@ -40,6 +40,7 @@ def main(cfg: "DictConfig"):  # noqa: F821
         name=exp_name,
         config=dict(cfg),
     )
+    output_dir = hydra.core.hydra_config.HydraConfig.get().runtime.output_dir + '/'
 
     print('Starting experiment ' + exp_name)
 
@@ -51,7 +52,14 @@ def main(cfg: "DictConfig"):  # noqa: F821
     eval_env = make_parallel_ks_eval_env(cfg)
 
     # Create agent
-    model, exploration_policy, device = make_sac_agent(cfg, train_env, eval_env)
+    model, device = make_sac_agent(cfg, train_env, eval_env)
+    if cfg.logger.load_model:
+        filepath = output_dir + '../../../' + cfg.logger.model_dir + 'model.pkl'
+        with open(filepath, 'rb') as file:
+            model_params = torch.load(file)
+        model.load_state_dict(model_params)
+        print(f"Model loaded from {filepath}")
+    exploration_policy = model[0]
 
     # Create SAC loss
     loss_module, target_net_updater = make_loss_module(cfg, model)
@@ -156,13 +164,13 @@ def main(cfg: "DictConfig"):  # noqa: F821
         episode_rewards = tensordict["next", "episode_reward"][episode_end]
 
         # Logging
-        if len(episode_rewards) > 0:
-            # we never call this for some reason...
-            episode_length = tensordict["next", "step_count"][episode_end]
-            log_info["train/reward"] = (episode_rewards/episode_length).mean().item()
-            log_info["train/last_reward"] = tensordict["next", "reward"][episode_end].mean().item()
-            log_info["train/episode_length"] = cfg.env.frame_skip * episode_length.sum().item() / len(episode_length)
         if collected_frames >= init_random_frames:
+            if len(episode_rewards) > 0:
+                # we never call this for some reason...
+                episode_length = tensordict["next", "step_count"][episode_end]
+                log_info["train/reward"] = (episode_rewards/episode_length).mean().item()
+                log_info["train/last_reward"] = tensordict["next", "reward"][episode_end].mean().item()
+                log_info["train/episode_length"] = cfg.env.frame_skip * episode_length.sum().item() / len(episode_length)
             log_info["train/q_loss"] = losses.get("loss_qvalue").mean().item()
             log_info["train/actor_loss"] = losses.get("loss_actor").mean().item()
             log_info["train/alpha_loss"] = losses.get("loss_alpha").mean().item()
@@ -172,7 +180,7 @@ def main(cfg: "DictConfig"):  # noqa: F821
             log_info["train/training_time"] = training_time
 
         # Evaluation
-        if i % cfg.logger.eval_iter == 0:
+        if i % cfg.logger.eval_iter == 0 and collected_frames >= init_random_frames:
             with set_exploration_type(ExplorationType.MODE), torch.no_grad():
                 eval_start = time.time()
                 eval_rollout = eval_env.rollout(
@@ -219,14 +227,19 @@ def main(cfg: "DictConfig"):  # noqa: F821
                 log_info.update({f"eval/mean_actuation_{i}": mean_actuations[i].item()})
                 log_info.update({f"eval/std_actuation_{i}": std_actuations[i].item()})
 
-        wandb.log(data=log_info, step=collected_frames)
+        if collected_frames >= init_random_frames:
+            wandb.log(data=log_info, step=collected_frames-init_random_frames)
         sampling_start = time.time()
 
     # Save replay buffer
     if cfg.logger.save_replay_buffer:
-        output_dir = hydra.core.hydra_config.HydraConfig.get().runtime.output_dir + '/'
         replay_buffer.dumps(output_dir + 'replay_buffer_SAC')
         print(f"Saved replay buffer. (Saved at {output_dir + 'replay_buffer_SAC'}).")
+
+    # Save model
+    with open(output_dir + 'model.pkl', 'wb') as file:
+        torch.save(model.state_dict(), file)
+        print(f"Saved model. (Saved at {output_dir + 'model.pkl'})")
 
     collector.shutdown()
     wandb.finish()
