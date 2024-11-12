@@ -68,6 +68,7 @@ def make_ks_env(cfg, eval=False):
         "target": cfg.env.target,
         "N": cfg.env.N,
         "dt": cfg.env.dt,
+        "actuator_loss_weight": cfg.env.actuator_reward_weight,
     }
 
     # Create environments
@@ -122,6 +123,7 @@ def make_ks_eval_env(cfg):
         "target": cfg.env.target,
         "N": cfg.env.N,
         "dt": cfg.env.dt,
+        "actuator_loss_weight": cfg.env.actuator_reward_weight,
     }
     test_env = add_env_transforms(KSenv(**env_params), cfg)
     test_env.eval()

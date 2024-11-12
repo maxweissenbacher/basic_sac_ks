@@ -4,9 +4,10 @@ env:
   num_actuators: 20
   num_sensors: 64
   actuator_scale: 0.1
-  N: 64
+  N: 256
   dt: 0.05
   num_envs: 5  # Number of parallel training envs
+  actuator_reward_weight: 0.0
   burnin: 2000
   target:
   exp_name: KS
@@ -21,7 +22,7 @@ collector:
   total_frames: 200_000
   init_random_frames: 20_000
   max_episode_length: 150  # Timesteps (disregarding frame skip)
-  frames_per_batch: 500
+  frames_per_batch: 512
   device: cpu
   reset_at_each_iter: False
 
@@ -42,6 +43,7 @@ optim:
   target_update_polyak: 0.995
   alpha_init: 1.0
   adam_eps: 1.0e-8
+  num_gradient_updates: ${collector.frames_per_batch}
 
 # network
 network:

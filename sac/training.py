@@ -84,11 +84,14 @@ def main(cfg: "DictConfig"):  # noqa: F821
     num_console_updates = 1000
 
     init_random_frames = cfg.collector.init_random_frames // cfg.env.frame_skip
+    """
     num_updates = int(
         cfg.env.num_envs
         * cfg.collector.frames_per_batch
         * cfg.optim.utd_ratio
     )
+    """
+    num_updates = cfg.optim.num_gradient_updates
     prb = cfg.replay_buffer.prb
 
     sampling_start = time.time()
