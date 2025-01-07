@@ -234,6 +234,14 @@ def main(cfg: "DictConfig"):  # noqa: F821
             wandb.log(data=log_info, step=collected_frames-init_random_frames)
         sampling_start = time.time()
 
+        # Save model
+        model_filename = output_dir + f'model_{int(collected_frames)}.pkl'
+        with open(model_filename, 'wb') as file:
+            torch.save(model.state_dict(), file)
+            print(f"Saved model. (Saved at {model_filename})")
+        wandb.log_model(path=model_filename, name=f'model_{int(collected_frames)}')
+        print(f"Uploaded model to WandB.")
+
     # Save replay buffer
     if cfg.logger.save_replay_buffer:
         replay_buffer.dumps(output_dir + 'replay_buffer_SAC')
