@@ -21,8 +21,8 @@ env:
 collector:
   total_frames: 200_000
   init_random_frames: 20_000
-  max_episode_length: 150  # Timesteps (disregarding frame skip)
-  frames_per_batch: 512
+  max_episode_length: 256  # Timesteps (disregarding frame skip)
+  frames_per_batch: 256
   device: cpu
   reset_at_each_iter: False
 
@@ -60,7 +60,7 @@ logger:
   backend: wandb
   mode: online
   eval_iter: 1  # Evaluate every x batches
-  test_episode_length: 150
+  test_episode_length: 256
   num_eval_envs: 20
   project_name: basic_sac_transfer_from_L_12
   team_name: why_are_all_the_good_names_taken_aaa
